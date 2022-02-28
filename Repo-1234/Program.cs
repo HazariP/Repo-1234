@@ -10,8 +10,7 @@ namespace Repo_1234
         {
             // open chrome browser
             IWebDriver driver = new ChromeDriver();
-
-
+            driver.Manage().Window.Maximize();
 
             // launch turnup browser
             driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
@@ -28,8 +27,15 @@ namespace Repo_1234
             IWebElement loginButton = driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]"));
                 loginButton.Click();
 
-
             //check if user name is logged in successfully 
-        }
+            IWebElement hellohari = driver.FindElement(By.XPath("//*[@id='logoutForm']/ul/li/a"));
+
+            if (hellohari.Text == "Hello hari!")
+            {
+                Console.WriteLine("Logged in successfully, test passed.");
+            }
+            else
+                Console.WriteLine("Login failed, testfailed.");
+             }
     }
 }
